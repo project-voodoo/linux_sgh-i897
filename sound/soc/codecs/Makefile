@@ -40,7 +40,11 @@ snd-soc-wm8988-objs := wm8988.o
 snd-soc-wm8990-objs := wm8990.o
 snd-soc-wm8993-objs := wm8993.o
 ifdef CONFIG_S5PC110_KEPLER_BOARD
+ifeq ($(CONFIG_SND_VOODOO),y)
+snd-soc-wm8994-objs := wm8994.o wm8994_kepler.o wm8994_voodoo.o A1026_i2c_drv.o ttymisc.o audience.o
+else
 snd-soc-wm8994-objs := wm8994.o wm8994_kepler.o A1026_i2c_drv.o ttymisc.o audience.o
+endif
 else 
 ifdef CONFIG_S5PC110_HAWK_BOARD
 snd-soc-wm8994-objs := wm8994.o wm8994_aries.o HAC.o ttymisc.o
